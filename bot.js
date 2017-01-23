@@ -11,10 +11,10 @@ var snoowrap = require('snoowrap');
 // configure the reddit library using all of your super-secret config data
 const reddit = new snoowrap({
     userAgent: 'Javascript bot that compiles web-dev articles and posts them in /r/RCBRedditBot',
-    clientId: redditConfig.clientId || REDDIT_CLIENT,
-    clientSecret: redditConfig.clientSecret || REDDIT_SECRET,
-    username: redditConfig.username || REDDIT_USER,
-    password: redditConfig.password|| REDDIT_PASSWORD});
+    clientId:  REDDIT_CLIENT || redditConfig.clientId,
+    clientSecret:  REDDIT_SECRET || redditConfig.clientSecret,
+    username:  REDDIT_USER || redditConfig.username,
+    password: REDDIT_PASSWORD || redditConfig.password});
 
 // Variables used in application
 
