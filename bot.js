@@ -1,4 +1,3 @@
-
 // REDDIT LIBRARY AND SETUP ////////////////////////////////////////
 
 // this is our private config file with relevant application information for both Reddit and nodemailer
@@ -9,19 +8,45 @@ var snoowrap = require('snoowrap');
 
 // configure the reddit library using all of your super-secret config data
 const reddit = new snoowrap({
-  userAgent: 'Javascript bot that compiles web-dev articles and posts them in /r/RCBRedditBot',
-  clientId: redditConfig.clientId,
-  clientSecret: redditConfig.clientSecret,
-  username: redditConfig.username,
-  password: redditConfig.password
-});
+    userAgent: 'Javascript bot that compiles web-dev articles and posts them in /r/RCBRedditBot',
+    clientId: redditConfig.clientId,
+    clientSecret: redditConfig.clientSecret,
+    username: redditConfig.username,
+    password: redditConfig.password});
 
+// Variables used in application
+
+var posts = [];
 
 // Our main function that will call the Reddit api for new stories in a specific subreddit
-getNewStories = () => {
-  reddit.getSubreddit('aww').getHot().then(console.log)
+getNewStories = (sub='aww', num=10) => {
+    reddit.getSubreddit(sub).getHot()
+    .then(function(listing) {
+        for (var i = 0; i < num ; i++) {
+          var post = listing[i];
+            if ( post.url && !post.stickied && posts.indexOf(post == -1)) {
+                posts.push(post);
+                console.log(post.url)
+                postNewStory(post);
+            }
+        }
+    })
 }
 
+postNewStory = (post) => {
+    reddit.getSubreddit('RCBRedditBot').submitLink(
+      {
+        title: post.title + 'cross-post from ' + post.subreddit.display_name,
+        url: post.url,
+        resubmit: false
+    })
+    .catch(function(e){
+      console.log("Article already submitted.")
+    })
+    .then(console.log("Article Posted!"))
+}
 
 // set how often the bot will run in milliseconds. Be careful not to set it for too frequently!
-setInterval(getNewStories, 10000);
+// This one is set for an hour
+getNewStories();
+setInterval(getNewStories, 3600000);
