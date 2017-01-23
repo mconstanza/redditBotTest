@@ -18,7 +18,7 @@ const reddit = new snoowrap({
     clientId:  REDDIT_CLIENT,
     clientSecret:  REDDIT_SECRET,
     username:  REDDIT_USER,
-    password: REDDIT_PASSWORD});
+    password: REDDIT_PASS});
 
 // Variables used in application
 
