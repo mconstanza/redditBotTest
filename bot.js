@@ -36,7 +36,7 @@ getNewStories = (sub='aww', num=10) => {
 postNewStory = (post) => {
     reddit.getSubreddit('RCBRedditBot').submitLink(
       {
-        title: post.title + 'cross-post from ' + post.subreddit.display_name,
+        title: post.title + ' cross-post from ' + post.subreddit.display_name,
         url: post.url,
         resubmit: false
     })
