@@ -3,6 +3,10 @@
 // this is our private config file with relevant application information for both Reddit and nodemailer
 if(process.env.NODE_ENV == "development"){
   var redditConfig = require('./config.js');
+  var REDDIT_CLIENT = redditConfig.clientId;
+  var REDDIT_SECRET = redditConfig.clientSecret;
+  var REDDIT_USER = redditConfig.username;
+  var REDDIT_PASSWORD = redditConfig.password;
 }
 
 // This is a wrapper for the Reddit api. It isn't necessary, but it makes working with the API easier
@@ -11,10 +15,10 @@ var snoowrap = require('snoowrap');
 // configure the reddit library using all of your super-secret config data
 const reddit = new snoowrap({
     userAgent: 'Javascript bot that compiles web-dev articles and posts them in /r/RCBRedditBot',
-    clientId:  REDDIT_CLIENT || redditConfig.clientId,
-    clientSecret:  REDDIT_SECRET || redditConfig.clientSecret,
-    username:  REDDIT_USER || redditConfig.username,
-    password: REDDIT_PASSWORD || redditConfig.password});
+    clientId:  REDDIT_CLIENT,
+    clientSecret:  REDDIT_SECRET,
+    username:  REDDIT_USER,
+    password: REDDIT_PASSWORD});
 
 // Variables used in application
 
