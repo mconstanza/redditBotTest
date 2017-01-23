@@ -1,7 +1,7 @@
 // REDDIT LIBRARY AND SETUP ////////////////////////////////////////
 
 // this is our private config file with relevant application information for both Reddit and nodemailer
-if(NODE_ENV="development"){
+if(process.env.NODE_ENV == "development"){
   var redditConfig = require('./config.js');
 }
 
