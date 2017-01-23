@@ -37,6 +37,7 @@ getNewStories = (sub='aww', num=10) => {
     })
 }
 
+// This function submits a post to our private subreddit
 postNewStory = (post) => {
     reddit.getSubreddit('RCBRedditBot').submitLink(
       {
@@ -50,6 +51,7 @@ postNewStory = (post) => {
     .then(console.log("Article Posted!"))
 }
 
+// This function runs getNewStories in several diffrent subreddits and posts them in our subreddit
 getDevStories = () => {
   getNewStories('coding', 10);
   getNewStories('web_design', 10);
@@ -64,7 +66,8 @@ getDevStories = () => {
 }
 
 
-// set how often the bot will run in milliseconds. Be careful not to set it for too frequently!
-// This one is set for an hour
+// We run the function once so that it runs immediately when deployed
 getDevStories();
-setInterval(getDevStories, 3600000);
+// Set how often the bot will run in milliseconds. Be careful not to set it for too frequently!
+// This one is set for half an hour
+setInterval(getDevStories, 1800000);
