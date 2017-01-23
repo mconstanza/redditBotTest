@@ -6,7 +6,7 @@ if(process.env.NODE_ENV == "development"){
   var REDDIT_CLIENT = redditConfig.clientId;
   var REDDIT_SECRET = redditConfig.clientSecret;
   var REDDIT_USER = redditConfig.username;
-  var REDDIT_PASSWORD = redditConfig.password;
+  var REDDIT_PASS = redditConfig.password;
 }
 
 // This is a wrapper for the Reddit api. It isn't necessary, but it makes working with the API easier
