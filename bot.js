@@ -41,7 +41,7 @@ getNewStories = (sub='aww', num=10) => {
 postNewStory = (post) => {
     reddit.getSubreddit('RCBRedditBot').submitLink(
       {
-        title: post.title,
+        title: post.title + ' (X-post from /r/'+ post.subreddit.display_name + ')',
         url: post.url,
         resubmit: false
     })
