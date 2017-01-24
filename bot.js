@@ -39,6 +39,7 @@ getNewStories = (sub='aww', num=10) => {
 
 // This function submits a post to our private subreddit
 postNewStory = (post) => {
+  console.log(post)
     reddit.getSubreddit('RCBRedditBot').submitLink(
       {
         title: post.title + ' (X-post from /r/'+ post.subreddit.display_name + ')',
@@ -60,8 +61,6 @@ getDevStories = () => {
   getNewStories('webdev', 10);
   getNewStories('Frontend', 10);
   getNewStories('reactjs', 10);
-  getNewStories('learnjavascript', 10);
-  getNewStories('learnprogramming', 10);
   getNewStories('compsci', 10);
 }
 
