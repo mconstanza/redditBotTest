@@ -44,7 +44,7 @@ postNewStory = (post) => {
   // creating a post object to submit to Reddit
     reddit.getSubreddit('RCBRedditBot').submitLink(
       {
-        title: post.title + ' (X-post from /r/'+ post.subreddit.display_name + ')',
+        title: post.title + ' (from /r/'+ post.subreddit.display_name + ')',
         url: post.url,
         resubmit: false
     })
